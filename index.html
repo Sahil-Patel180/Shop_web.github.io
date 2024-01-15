@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop:Sell Products</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="icon" href="shop.png">
+
+</head>
+
+<body>
+
+    <center>
+        <p><img src="shop.png" alt="logo" style="height: 175px; width: 175px;">
+        <h1>Sell Products</h1>
+        </p>
+    </center>
+    <p>Shop Id &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" id="shopid"
+            placeholder="Shop Id" style="width: 31%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(165, 161, 161);
+            border-radius: 4px;" required></p>
+    <p>Date and Time&nbsp;&nbsp;<input type="datetime-local" id="dateandtime" style="width: 31%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid rgb(165, 161, 161);
+        border-radius: 4px;" required></p>
+    <p>Consumer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="consumer" name="name"
+            placeholder="Consumer Name" style="width: 31%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(165, 161, 161);
+            border-radius: 4px;" required>
+    </p>
+    <p>Phone Number&nbsp;<input type="number" id="pnumber" name="Phone Number" placeholder="Phone Number" type="tel"
+            min="1" maxlength="10" style="width: 31%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(165, 161, 161);
+            border-radius: 4px;" required></p>
+    <p>Premium Id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" id="premium" name="Premium Id"
+            placeholder="Premium Id" minlength="10" style="width: 31%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(165, 161, 161);
+            border-radius: 4px;">
+    </p>
+    <p>Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea id="address" name="address"
+            placeholder="Address" cols="30" rows="2" style="width: 31%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(165, 161, 161);
+            border-radius: 4px;" required></textarea></p>
+    <hr>
+    <table>
+        <tr>
+            <td>
+                <form autocomplete="off" onsubmit="onFormSubmit()">
+                    <div>
+                        <label for="itemName" style="font-weight: bolder;">Item Name</label>
+                        <input type="text" name="itemName" id="itemName" placeholder="Item Name" style="width: 81%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        display: inline-block;
+                        border: 1px solid rgb(165, 161, 161);
+                        border-radius: 4px;" required>
+                    </div>
+                    <div>
+                        <label for="singleCost" style="font-weight: bolder;">Single Cost</label>
+                        <input type="number" name="singleCost" id="singleCost" min="1" placeholder="Single Cost" style=" width: 81%; padding: 12px 20px; margin: 8px 0; display: inline-block;
+                            border: 1px solid rgb(165, 161, 161); border-radius: 4px;" required>
+                    </div>
+                    <div>
+                        <label for="qty" style="font-weight: bolder;">Quantity</label>
+                        <input type="number" name="qty" id="qty" min="1" placeholder="Quantity" style="width: 81%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        display: inline-block;
+                        border: 1px solid rgb(165, 161, 161);
+                        border-radius: 4px;" required>
+                    </div>
+                    <div>
+                        <label for="discount" style="font-weight: bolder;">Discount</label>
+                        <input type="number" name="Discount" id="discount" placeholder="Discount"
+                            style="width: 81%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid rgb(165, 161, 161); border-radius: 4px;"
+                            oninput="Calc();" min="0">
+                    </div>
+                    <div>
+                        <label for="totalCost" style="font-weight: bolder;">Total Cost</label>
+                        <input type="number" name="totalCost" id="totalCost" min="1" placeholder="Total Cost" style="width: 81%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        display: inline-block;
+                        border: 1px solid rgb(165, 161, 161);
+                        border-radius: 4px;" readonly>
+                    </div>
+
+                    <div class="form_action--button">
+                        <input type="submit" value="Add" onclick="Calc();">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+
+            <td>
+                <table class="list" id="storeList">
+                    <thead>
+                        <tr id="customer_detail">
+                            <th>Item Name</th>
+                            <th>Single Cost</th>
+                            <th>Quantity</th>
+                            <th>Discount</th>
+                            <th>Total Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </td>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript" src="script.js"></script>
+    <hr>
+    <p>Final Cost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id="fcost" name="fcost" value="0"
+            placeholder="Final Cost" min="1" style="width: 31%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(165, 161, 161);
+            border-radius: 4px;" readonly></p>
+    <center>
+        <div>
+            <button type="submit" id="bt" onclick="saveFile()">Save Data</button>
+        </div>
+    </center>
+</body>
+
+<script>
+    function saveFile() {
+        debugger;
+        // Get the data from each element on the form.
+        const shopid = document.getElementById('shopid');
+        const dateandtime = document.getElementById('dateandtime');
+        const consumer = document.getElementById('consumer');
+        const phonenumber = document.getElementById('pnumber');
+        const premiumid = document.getElementById('premium');
+        const address = document.getElementById('address');
+        const finalcost = document.getElementById("fcost");
+
+        let data =
+            '\r Shop Id: ' + shopid.value + ' \r\n ' +
+            'Date and Time: ' + dateandtime.value + ' \r\n ' +
+            'Consumer: ' + consumer.value + ' \r\n ' +
+            'Phone Number: ' + phonenumber.value + ' \r\n ' +
+            'Premium Id: ' + premiumid.value + ' \r\n ' +
+            'Address: ' + address.value + ' \r\n ' +
+            //'Item: ' + iname + ' \r\n ' +
+            'Final Cost: ' + finalcost.value + ' \r\n ' +
+            'Items: \r\n ' +
+            'itemname   singlecost   Quantity   Discount   totalcost \r\n';
+
+
+        var table = document.getElementById("storeList");
+        var itemname = ""; singlecost = 0; Quantity = 0; Discount = 0; totalcost = 0;
+        for (var i = 1; i < table.rows.length; i++) {
+            itemname = table.rows[i].cells[0].innerHTML;
+            singlecost = table.rows[i].cells[1].innerHTML;
+            Quantity = table.rows[i].cells[2].innerHTML;
+            Discount = table.rows[i].cells[3].innerHTML;
+            totalcost = table.rows[i].cells[4].innerHTML;
+            data += itemname + '            ' + singlecost + '             ' + Quantity + '             ' + Discount + '               ' + totalcost + ' \r\n ';
+        }
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'cbsellproductData.txt';	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+
+
+        newLink.click();
+    }
+</script>
+
+</html>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Read Text File</title>
+</head>
+
+<body>
+    <input type="file" name="inputfile" id="inputfile">
+    <br>
+
+    <pre id="output"></pre>
+
+    <script>
+        // document.getElementById('inputfile')
+        //     .addEventListener('change', function () {
+
+        //         var fr = new FileReader();
+        //         fr.onload = function () {
+        //             document.getElementById('output')
+        //                 .textContent = fr.result;
+        //         }
+
+        //         fr.readAsText(this.files[0]);
+        //     })
+
+
+
+        let saveFile = () => {
+
+            // Get the data from each element on the form.
+            const shopid = document.getElementById('shopid');
+            const dateandtime = document.getElementById('dateandtime');
+            const consumer = document.getElementById('consumer');
+            const phonenumber = document.getElementById('pnumber');
+            const premiumid = document.getElementById('premium');
+            const address = document.getElementById('address');
+            const finalcost = document.getElementById('fcost');
+
+            // This variable stores all the data.
+            let data =
+                '\r Shop Id: ' + shopid.value + ' \r\n ' +
+                'Date and Time: ' + dateandtime.value + ' \r\n ' +
+                'Consumer: ' + consumer.value + ' \r\n ' +
+                'Phone Number: ' + phonenumber.value + ' \r\n ' +
+                'Premium Id: ' + premiumid.value + ' \r\n ' +
+                'Address: ' + address.value +
+                'Final Cost: ' + finalcost.value + ' \r\n ';
+
+            // Convert the text to BLOB.
+            const textToBLOB = new Blob([data], { type: 'text/plain' });
+            const sFileName = 'cbsellproductData.txt';	   // The file to save the data.
+
+            let newLink = document.createElement("a");
+            newLink.download = sFileName;
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            }
+            else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+
+            newLink.click();
+        }
+    </script>
+</body>
+
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Read Text File</title>
+</head>
+
+<body>
+    <input type="file" name="inputfile" id="inputfile">
+    <br>
+
+    <pre id="output"></pre>
+
+    <script type="text/javascript">
+        document.getElementById('inputfile')
+            .addEventListener('change', function () {
+
+                var fr = new FileReader();
+                fr.onload = function () {
+                    document.getElementById('output')
+                        .textContent = fr.result;
+                }
+
+                fr.readAsText(this.files[0]);
+            })
+    </script>
+</body>
+
+</html> -->
